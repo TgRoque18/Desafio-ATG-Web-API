@@ -15,3 +15,6 @@ A api foi desenvolvida usando padrão .Net, com envio de mensagem em Json para o
 O exemplo usado para realizar a conexão foi: https://www.rabbitmq.com/tutorials/tutorial-one-dotnet.html
 
 Nessa API ainda foi criado um projeto de testes simples, somente a fim de exemplificar o uso do mesmo numa API.
+
+## A página Web
+O desenvolvimento Web foi feito usando Angular CLI, para acessá-lo clique no link: https://github.com/TgRoque18/Desafio-ATG-Web-Application
