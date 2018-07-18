@@ -24,6 +24,14 @@ namespace WebAPI.Service
         {
             try
             {
+                /*Na instancia eu nao inseri a porta do serviço
+                    Por algum motivo não conseguia conectar ao RabbitMQ quando inseria a porta.
+                    Mas sem ela funcionou.
+                    Verifiquei no serviço informado, e pelos graficos ele estava recebendo conexões novas.
+                    Porém nao tive o retorno Json que esperava.
+                    Pesquisei algumas vezes mas não encontrei nada exemplificando um retorno do tipo.
+                    Ja trabalhei uma vez com outro serviço de mensageria semelhante e recebiamos 200 como OK de retorno.
+                */
                 connectionFactory.HostName = _hostName;
                 connectionFactory.UserName = _userName;
                 connectionFactory.Password = _password;
