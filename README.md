@@ -22,16 +22,10 @@ O desenvolvimento Web foi feito usando Angular CLI, para acessá-lo clique no li
 ## Configuração Inicial
 
 No arquivo Web.config existem 6 appSettings, e elas devem ser preenchidas:
-    <add key="HOSTNAME" value="" />
-    <add key="USERNAME" value="" />
-    <add key="PASSWORD" value="" />
-    <add key="PORT" value="" />
-    <add key="LOGFILE" value="" />
-    <add key="QUEUE" value="" />
 
-HOSTNAME: URL do serviço RabbitMQ;
-USERNAME: Usuário do serviço RabbitMQ;
-PASSWORD: Senha do usuário do serviço Rabbit MQ;
-PORT: Porta do serviço Rabbit MQ;
-LOGFILE: Caminho onde ficará armazenado o arquivo .txt para amazenamento de logs;
-QUEUE: Nome da fila do Serviço RabbitMQ;
+##### HOSTNAME: URL do serviço RabbitMQ;
+##### USERNAME: Usuário do serviço RabbitMQ;
+##### PASSWORD: Senha do usuário do serviço Rabbit MQ;
+##### PORT: Porta do serviço Rabbit MQ;
+##### LOGFILE: Caminho onde ficará armazenado o arquivo .txt para amazenamento de logs;
+##### QUEUE: Nome da fila do Serviço RabbitMQ;
