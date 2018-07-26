@@ -232,6 +232,7 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FormModelResult.cs" />
     <Compile Include="Models\FormModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,6 +240,7 @@
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Service\CommonService.cs" />
     <Compile Include="Service\LogService.cs" />
+    <Compile Include="Service\RpcService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

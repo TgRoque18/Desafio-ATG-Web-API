@@ -12,7 +12,7 @@ namespace WebAPI.Models
     //[Serializable]
 
     [DataContract]
-    public class FormModel
+    public class FormModelResult
     {
         #region variáveis
 
@@ -21,9 +21,8 @@ namespace WebAPI.Models
         private string symbol;
         private int quantity;
         private double price;
-        //private bool status;
-        //private string[] msgs;
-
+        private string status;
+        private string msgs;
 
         #endregion variáveis
 
@@ -99,46 +98,35 @@ namespace WebAPI.Models
             }
         }
 
-        //[DataMember]
-        //public bool Status
-        //{
-        //    get
-        //    {
-        //        return status;
-        //    }
+        [DataMember]
+        public string Status
+        {
+            get
+            {
+                return status;
+            }
 
-        //    set
-        //    {
-        //        status = value;
-        //    }
-        //}
+            set
+            {
+                status = value;
+            }
+        }
 
-        //[DataMember]
-        //public string[] Msgs
-        //{
-        //    get
-        //    {
-        //        return msgs;
-        //    }
+        [DataMember]
+        public string Msgs
+        {
+            get
+            {
+                return msgs;
+            }
 
-        //    set
-        //    {
-        //        msgs = value;
-        //    }
-        //}
+            set
+            {
+                msgs = value;
+            }
+        }
 
         #endregion Propriedades
 
-        //public FormModel(int id, string side, string symbol, int quantity,
-        //    double price, bool status, string[] msgs)
-        //{
-        //    this.Id = id;
-        //    this.Side = side;
-        //    this.Symbol = symbol;
-        //    this.Quantity = quantity;
-        //    this.Price = price;
-        //    //this.Status = status;
-        //    //this.Msgs = msgs;
-        //}
     }
 }

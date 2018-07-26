@@ -22,36 +22,33 @@ namespace WebAPI.Controllers
         private static string _log = ConfigurationManager.AppSettings["LOGFILE"];
 
         // POST: api/Form
-        public void Post(JObject form)
+        public FormModelResult Post(JObject form)
         {
+            LogService.StartProcessLog(_log);
+            FormModelResult formResult = new FormModelResult();
+
             try
             {
-                LogService.StartProcessLog(_log);
-
                 if (ModelState.IsValid)
                 {
-                    CommonService service = new CommonService();
+                    LogService.SaveLog(_log, "Conexão com RabbitMQ aberta.");
 
-                    using (var connection = service.CreateConnection())
-                    {
-                        LogService.SaveLog(_log, "Conexão com RabbitMQ aberta.");
+                    LogService.SaveLog(_log, "Iniciando operação RPC.");
 
-                        using (var channel = service.CreateModel(connection))
-                        {
-                            LogService.SaveLog(_log, "Canal com RabbitMQ aberto.");
+                    RpcService rpcService = new RpcService();
 
-                            service.QueueDeclare(channel);
+                    FormModel formModel = rpcService.ConvertToJsonToFormObj(form);
+                    
+                    string body = rpcService.ConvertToJson(formModel).ToLower();
 
-                            byte[] body = service.ConvertToJson(form);
+                    LogService.SaveLog(_log, "Chamada RPC.");
 
-                            service.BasicPublish(channel, body);
+                    var response = rpcService.Call(body);
 
-                            LogService.SaveLog(_log, "Cominicação com RabbitMQ realizada.");
-                        }
+                    JObject jsonResult = JObject.Parse(response);
 
-                        LogService.SaveLog(_log, "Canal com RabbitMQ fechado.");
-                    }
-
+                    formResult = rpcService.ConvertFormModelToResult(formModel, jsonResult);
+                    
                     LogService.SaveLog(_log, "Conexão com RabbitMQ fechada.");
                 }
                 else
@@ -66,6 +63,7 @@ namespace WebAPI.Controllers
 
             LogService.FinishProcessLog(_log);
 
+            return formResult;
         }
     }
 }
